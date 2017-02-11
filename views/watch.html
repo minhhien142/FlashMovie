@@ -11,130 +11,41 @@
   <!--<![endif]-->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <title>Phim cũng lắm gian truân</title>
-  <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
-  <script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>
-  <script src="/js/videojs-resolution-switcher.js"></script>
-  <style type="text/css">
-    .vjs-resolution-button {
-      color: #ccc;
-      font-family: VideoJS;
-    }
-
-    .vjs-resolution-button .vjs-resolution-button-staticlabel:before {
-      content: '\f110';
-      font-size: 1.8em;
-      line-height: 1.67;
-    }
-
-    .vjs-resolution-button .vjs-resolution-button-label {
-        font-size: 1em;
-        line-height: 3em;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        box-sizing: inherit;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .vjs-resolution-button ul.vjs-menu-content {
-      width: 4em !important;
-    }
-
-    .vjs-resolution-button .vjs-menu {
-      left: 0;
-    }
-
-    .vjs-resolution-button .vjs-menu li {
-      text-transform: none;
-      font-size: 1em;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    a{
-      text-decoration: none;
-    }
-    a:link {
-        color: black;
-    }
-
-    /* visited link */
-    a:visited {
-        color: green;
-    }
-    button:visited {
-        background : black;
-    }
-
-    /* mouse over link */
-    a:hover {
-        color: black;
-    }
-    button:hover {
-        background: #30ace5;
-    }
-
-    /* selected link */
-    a:active {
-        color: blue;
-    }
-    button:active {
-        background: red;
-    }
-
-  </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
       <section class="pure-g">
         <div class="pure-u-1">
-          <h3>
-            [<a style="color: blue" href="javascript:history.go(-1)">Quay lại</a>]
-            {{#video.title}}
-              :: <span>{{video.title}}</span>
-            {{/video.title}}
-          </h3>
+          <img src="//i.imgur.com/8QjKP3xl.jpg" class="pure-img">
 
-          <div class="videocontent">
-            <video poster="{{video.thumb}}" id="phim-clgt-vn" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered"
-              controls width="640" height="auto"
-              data-setup='{"fluid":true}'>
-              {{#medias}}
-                <source src="{{url}}" type="video/mp4" label="{{label}}" res="{{resolution}}" />
-             {{/medias}}
-            </video>
+          <form class="pure-form" method="get" action="/search">
+            <fieldset>
+              {{#csrfToken}}
+              <input class="pure-input-1" type="hidden" name="_csrf" value="{{csrfToken}}">
+              {{/csrfToken}}
+              <input class="pure-input-1" type="text" name="q" placeholder="Nhập Tên Phim">
+              <button class="pure-button pure-input-1 pure-button-primary" type="submit">
+                Tìm
+              </button>
+            </fieldset>
+          </form>
+
+          <div style="text-align: left;">
+            <h3 class="green">Cập nhật:</h3>
+            <ol>
+              <li>Thêm tính năng xem được phim nhiều tập</li>
+              <li>Trang chính thức tại đây :D<a href="https://phim.clgt.vn/">https://phim.clgt.vn/ </li>
+              <li>80% mã nguồn mình tham khảo của anh Quốc Nguyễn </li>
+              <li><a href="https://kipalog.com/posts/Toi-da-viet-phim-clgt-vn-nhu-the-nao"></a>link tham khảo bài viết</li>
+
+            </ol>
           </div>
-          {{#epsList}}
-          
-          
-            <div style='float: left; margin: 5px; '>
-              <button ><a id="eps" href="/watch?id={{hash}}">{{text}}</a></button>
-            </div>
-            
-      
-          {{/epsList}}
         </div>
       </section>
     </div>
   </div>
-
+  <script src="/js/ga.js"></script>
 </body>
 </html>
 
-<script type="text/javascript">
-window.HELP_IMPROVE_VIDEOJS = false
-var player = window.videojs('phim-clgt-vn')
-player.ready(function () {
-  player.videoJsResolutionSwitcher({
-    default: 'low',
-    dynamicLabel: true
-  })
-
-  player.on('error', function (e, whatever) {
-    // switch source
-  })
-})
-</script>
