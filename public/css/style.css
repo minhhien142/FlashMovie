@@ -1,9 +1,10 @@
   .container {
-    max-width: 600px;
+    max-width: 800px;
     text-align: center;
+    min-height: 100px;
   }
   .wrapper {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
   }
   html, button, input, select, textarea,
@@ -19,3 +20,11 @@
     text-decoration: none;
     color: black
   }*/
+.pure-img {
+    max-width: 60%;
+    margin-left: 20%
+}
+.search-results {
+  text-align: left;
+  margin-left: 20%
+}
