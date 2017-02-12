@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html onkeydown="myFunction(event)">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
@@ -108,6 +108,9 @@
                 <source src="{{url}}" type="video/mp4" label="{{label}}" res="{{resolution}}" />
              {{/medias}}
             </video>
+
+   <!--   -->
+
           </div>
           {{#epsList}}
           
@@ -122,6 +125,37 @@
       </section>
     </div>
   </div>
+  <script> 
+    var myVideo = document.getElementById("phim-clgt-vn");
+
+    function playPause() { 
+      if (myVideo.paused) 
+          myVideo.play(); 
+      else 
+          myVideo.pause(); 
+    }
+
+    function increaseTime() { 
+      myVideo.currentTime = myVideo.currentTime + 10;
+    }
+    function backTime(){
+      myVideo.currentTime = myVideo.currentTime - 10;
+    } 
+
+    function myFunction(event) {
+      var x = event.keyCode;
+      if(x == 32){
+        playPause()
+      }
+      if(x == 37){
+        backTime();
+      }
+      if(x == 39){
+        increaseTime();
+      }
+    }
+  </script> 
+
 
 </body>
 </html>
