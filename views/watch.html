@@ -14,6 +14,7 @@
   <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
   <script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>
   <script src="/js/videojs-resolution-switcher.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <style type="text/css">
     .vjs-resolution-button {
       color: #ccc;
@@ -100,17 +101,33 @@
             {{/video.title}}
           </h3>
 
-          <div class="videocontent">
-            <video poster="{{video.thumb}}" id="phim-clgt-vn" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered"
+          <div class="videocontent" id="videocontent">
+            <!-- <video poster="{{video.thumb}}" id="phim-clgt-vn" class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered"
               controls width="640" height="auto"
               data-setup='{"fluid":true}'>
               {{#medias}}
                 <source src="{{url}}" type="video/mp4" label="{{label}}" res="{{resolution}}" />
              {{/medias}}
-            </video>
+            </video> -->
 
-   <!--   -->
 
+          <!-- <iframe src="https://drive.google.com/file/d/142PeKW9WcoHp2oramGn3ZGNDGgf_s9Nu/preview" frameborder="0"></iframe> -->
+
+
+          <iframe id="drive-viewer-video-player-object-0" src="{{video.url}}" frameborder="0" width="640px" height="640px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" title="Trình phát video"></iframe>
+
+        </div>
+          <span>vui long chon server neu ko xem duoc</span>
+
+
+
+          <div id="server">
+          {{#medias}}
+              <button id="{{server}}">{{server}}</button>
+          {{/medias}}
+          </div>
+          <br>
+        </div>
           </div>
           {{#epsList}}
           
@@ -173,4 +190,17 @@ player.ready(function () {
     // switch source
   })
 })
+</script>
+<script>
+  $(document).ready(function(){
+
+    {{#medias}}
+      $("#{{server}}").click(function(){
+        
+          $("#drive-viewer-video-player-object-0").attr("src","{{url}}".replace(/&#x2F;/g, "/").replace(/&#x3D;/g, "=" )) 
+      });
+
+    {{/medias}}
+
+});
 </script>

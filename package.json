@@ -26,9 +26,11 @@
     "mustache": "^2.3.0",
     "now-logs": "0.0.7",
     "purecss": "^0.6.2",
+    "request": "^2.87.0",
     "require-dir": "^0.3.1",
     "router": "^1.1.4",
     "serve-static": "^1.11.1",
+    "sync-request": "^6.0.0",
     "tunnel": "0.0.4"
   },
   "devDependencies": {
